@@ -62,4 +62,4 @@ node server.js
 🏃 Como Executar
 1️⃣ Baixe ou clone este repositório:
 
-https://github.com/domeneghettii/Start-caf-
+git clone https://github.com/domeneghettii/Start-caf-
