@@ -12,7 +12,7 @@ class CardapioList {
     getCardapioById(id){
         const cardapio = this.cardapios.find(cardapio => cardapio.id == id);
         if(!cardapio) {
-            throw new Error("Cardapio não encontrado!");
+            throw new Error("Cárdapio não encontrado!");
         }
         return cardapio;
     }
