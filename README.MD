@@ -57,7 +57,7 @@ npm install
 3️⃣ Execute o servidor:
 
 node server.js
-4️⃣ O projeto estará disponível em http://localhost:3000 (ou na porta configurada)
+4️⃣ O projeto estará disponível em http://localhost:4000 (ou na porta configurada)
 
 🏃 Como Executar
 1️⃣ Baixe ou clone este repositório:
