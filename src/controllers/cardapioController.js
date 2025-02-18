@@ -1,32 +1,67 @@
-const listaCardapios = require("../models/ListaCardapios");
+const Cardapio = require("../models/Cardapio");
+const CardapioList = require("../models/cardapiosList");
 
-const listaCardapios = (req, res) => {
-    res.json(listaCardapios.listarCardapios());
-};
+const lista = new CardapioList();
 
-const adicionarCardapio = (req, res) => {
-    const { id, nome, valor, categoria } = req.body;
-    if (!id || !nome || !valor || !categoria) {
-        return res.status(400).json({ erro: "Todos os campos são obrigatórios."});
-    }
-    const novoCardapio = listaCardapios.adicionarCardapio(id, nome, valor, categoria);
-    res.status(201).json(novoCardapio);
-};
+const cardapio1= new Cardapio(1, 'Herança & Sabor', '15,90', 'Sorvete de Morango');
+lista.addCardapio(cardapio1);
 
-const buscarCardapio = (req, res) => {
-    const cardapio =
-    listaCardapios.buscarCardapioPorId(parseInt(req.params.id));
-        if (!cardapio) {
-            return res.status(404).json({ error: "Cardapio não encontrado!"});
+lista.addCardapio( new Cardapio(2, 'RetroSabor', '27,99', 'Lasanha a Bolonesa'));
+
+const router = {
+    addCardapio: (req, res) => {
+        try {
+            const { id, nome, valor, categoria } = req.body;
+            if(!id || !nome || !valor || !categoria) {
+                throw new Error('Preencher todos os campos!')
+            }
+            const menu = new Cardapio (id, nome, valor, categoria)
+            lista.addCardapio(menu);
+            res.status(200).json({message: "Criado com sucesso ;)"});
+        } catch (error) {
+            res.status(400).json({message: "Erro ao criar este cárdapio :(", error});
         }
-        res.json(cardapio);
+    },
+
+    getAllCardapios: (req, res) => {
+        try {
+            const cardapios = lista.getAllCardapios();
+            res.status(200).json(cardapios);
+        } catch (error) {
+            res.status(404).json({message: 'Erro ao buscar o cárdapio',error});
+        }
+    },
+
+    getCardapioById: (req, res) => {
+        try {
+            const id = req.params.id;
+            res.status(200).json(lista.getCardapioById(id));
+        } catch (error) {
+            res.status(404).json({
+                message: 'Erro ao buscar cárdapio por id!',
+                error
+            });
+        }
+    },
+
+    updateCardapio: (req, res) => {
+        try {
+            res.status(200).json(lista.updateaCardapio(req.params.id, req.body));
+        } catch (error) {
+            res.status(404).json({ message: 'Erro ao atualizar :(', error: error });
+        }
+    },
+
+    deleteCardapio: (req, res) => {
+        try {
+            lista.deleteCardapio(req.params.id);
+            res.status(200).json({
+                message: 'Cárdapio deletado com sucesso!!'
+            })
+        } catch (error) {
+            res.status(404).json('Erro ao deletar cárdapio :(', error);
+        }
+    },
 };
 
-const removerCardapio = (req, res) => {
-    const cardapioRemovido =
-    listaCardapios.removerLivro(parseInt(req.params.id));
-        if (!cardapioRemovido) {
-            return res.status(404).json({ erro: "Cardapio não encontrado!"});
-        }
-        res.json({ mensagem: "Cardapio removido com sucesso!"})
-}
+module.exports = router;
