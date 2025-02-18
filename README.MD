@@ -63,7 +63,7 @@ node server.js
 
 📸 Prévia do Projeto
 ✅ Listar cardápios cadastrados  
-![Start-Café Preview](./prévia%20do%20projeto/listar%20get.png)
+![Start-Café Preview](../)
 
 
 
