@@ -57,19 +57,9 @@ npm install
 3️⃣ Execute o servidor:
 
 node server.js
-4️⃣ O projeto estará disponível em http://localhost:3000 (ou na porta configurada).
+4️⃣ O projeto estará disponível em http://localhost:3000 (ou na porta configurada)
 
+🏃 Como Executar
+1️⃣ Baixe ou clone este repositório:
 
-
-📸 Prévia do Projeto
-✅ Listar cardápios cadastrados  
-![Start-Café Preview](../)
-
-
-
-
-🚧 Em breve, será adicionada uma interface para facilitar a visualização dos cardápios! 🚧
-
-💡 Projeto em desenvolvimento! Sugestões e melhorias são bem-vindas.
-
-📌 Feito com ❤️ e dedicação!
+https://github.com/domeneghettii/Start-caf-
